@@ -1,0 +1,185 @@
+#app {
+
+}
+.navbar {
+    border-radius: 10px;
+}
+.nav-item{
+    padding-left: 30px;
+}
+
+body {
+    background-color: rgb(188, 211, 219);
+}
+
+#first-buttons {
+    text-align: center;
+    margin-top: 8%;
+    font-size: 25px;
+}
+
+.btn {
+    width: 140px;
+    height: 80px;
+    border-radius: 50%;
+    border: solid 2.5px black;
+    font-size: small;
+}
+
+
+#welcome {
+    font-family: Times, "Times New Roman", serif;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+}
+.input-group {
+    margin: auto;
+    width: 30%;
+}
+
+h5 {
+    text-align: center;
+    color: rgb(0, 0, 0)
+}
+#register-screen{
+    margin-top: 5%;
+    text-align: center;
+}
+h1 {
+    color: rgb(88, 40, 40);
+    padding-top: 10px;
+    text-align: center;
+}
+#footer {
+    /* margin-top: 40%; */
+    padding: 3px;
+    background-color: rgb(129, 147, 153);
+    color: white;
+    text-align: center;
+}
+
+#footer-title {
+    text-align: center;
+    color: rgb(231, 239, 241);
+    font-size: 30px;
+}
+
+#footer-name {
+    text-align: center;
+    color: rgb(231, 239, 241);
+    font-size: 10px;
+}
+
+#playlist-display {
+    margin: auto;
+    width: 70%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-top: 5%;
+    padding-bottom: 10%;
+}
+
+.playlist {
+    
+    border: solid rgb(188, 211, 219) 10px;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+}
+
+#login-screen {
+    padding-bottom: 10%;
+}
+
+#login-info {
+    padding-bottom: 10%;
+}
+
+#login-button {
+    margin-top: 10%;
+    margin-left: 45%;
+}
+
+#song-screen {
+    padding-bottom: 40%;
+    margin-left: 30%;
+}
+/* #song-display {
+    display: flex;
+} */
+#songs-screen-title {
+    font-family: Times, "Times New Roman", serif;
+    text-align: center;
+    font-size: 50px;
+    /* margin-left: 40%; */
+    color: rgb(0, 0, 0);
+}
+#playlist-button {
+    padding-bottom: 5%;
+    margin-left: 45%;
+}
+#move-to-create-playlist-button {
+    font-size: small;
+}
+
+#create-playlist-screen {
+    margin: auto;
+    width: 40%;
+}
+
+#create-playlist-button {
+    margin-left: 43%;
+    width: 20%;
+    height: 10%;
+    font-size: small;
+}
+.thing{
+    padding-top: 8%;
+    padding-bottom: 60%;
+}
+#create-song-button {
+    margin-left: 43%;
+    width: 20%;
+    height: 10%;
+    font-size: small;
+}
+.button {
+    font-size: small;
+    margin: auto;
+}
+.newClass {
+    margin-left: 30%;
+    width: 40%;
+}
+#edit-song-screen {
+    margin-top: -55%;
+    /* margin-left: -20%; */
+    width: 70%;
+}
+#buttonsOnSongsScreen {
+    padding-bottom: 10%;
+    margin-left: 20%;
+}
+.rest-actions {
+    /* flex-grow: 1; */
+    padding-bottom: 2%;
+}
+.song {
+    text-align: center;
+    background-color: rgb(211, 211, 211);
+    margin-right: 50%;
+    border: solid 1px black;
+    padding-top: 3%;
+    height: 20%;
+}
+#logout {
+    font-size: 70%;
+    width: 10%;
+}
+#login-buttons {
+    margin-top: 10%;
+    margin-left: 37%;
+}

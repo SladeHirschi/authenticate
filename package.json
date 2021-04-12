@@ -1,0 +1,29 @@
+{
+  "name": "expresstest",
+  "version": "1.0.0",
+  "description": "* Name (Text) * Length (Integer) * Rating (Integer)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsu-cit-csweb4200/s21-passport-SladeHirschi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dsu-cit-csweb4200/s21-passport-SladeHirschi/issues"
+  },
+  "homepage": "https://github.com/dsu-cit-csweb4200/s21-passport-SladeHirschi#readme"
+}

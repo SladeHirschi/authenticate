@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Midterm</title>
+    </head>
+    <body>
+        <div id="app">
+            <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                <div class="container-fluid">
+                    <a v-on:click="moveToHome" class="navbar-brand" href="#">Logo</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li v-on:click="moveToHome" class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            About
+                        </a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div v-if="welcomeScreen" id="welcome">Welcome to the playlist and music organizer!</div>
+
+
+            <div v-if="welcomeScreen" id="first-buttons">
+                <button v-on:click="moveToRegister" type="button" class="btn btn-primary btn-lg">Register</button></br></br>
+                <strong id="or">OR</strong></br></br>
+                <button v-on:click="moveToLogin" type="button" class="btn btn-secondary btn-lg">Login</button>
+            </div>
+
+            <div v-if="registerMode">
+                <h1><strong>Registration</strong></h1>
+            </div>
+
+            <div v-if="registerMode" id="register-screen">
+                <div v-if="registerMode" class="input-group mb-3">
+                    <h5>Please register using a valid and current email address to correspond with Music Organizer</h5>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userEmail">
+                </div></br></br>
+
+                <div v-if="registerMode" class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userFirstName">
+                </div></br></br>
+                
+                <div v-if="registerMode" class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userLastName">
+                </div></br></br>
+                
+                <div v-if="registerMode" class="input-group mb-3">
+                    <h5>Please create a strong and unique password to be used with Music Organizer</h5>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userPlainPassword">
+                </div></br></br>
+
+                
+
+                <button id="register-button" v-if="registerMode" v-on:click="createUser" type="button" class="btn btn-primary btn-lg">Click to Register</button>
+                <button v-if="registerMode" v-on:click="moveToLogin" type="button" class="btn btn-primary btn-lg">Click to Login</button>
+
+            </div></br></br>
+
+            <div id = "login-info" v-if="loginMode">
+                <h1><strong>Please Enter your information to Login</strong></h1>
+            </div>
+
+            <div id="login-screen" v-if="loginMode">
+                <div v-if="loginMode" class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userInputEmail">
+                </div>
+
+                <div v-if="loginMode" class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="userInputPassword">
+                </div>
+                <div id="login-buttons">
+                    <button v-if="loginMode" v-on:click="moveToAppScreenLogin" type="button" class="btn btn-primary btn-lg">Click to Login</button>
+                    <button v-if="loginMode" v-on:click="moveToRegister" type="button" class="btn btn-primary btn-lg">Click to Register</button>
+                </div>
+                
+            </div>
+
+            <div id = "app-screen" v-if="appScreen">
+                <div id="welcome">Welcome</div>
+                <div id="playlist-display">
+                    <div v-for="playlist in playlists">
+                        <!-- <div v-on:click="moveToSongsplaylist.name)" :id="playlist.name" class="playlist"><u>{{playlist.name}}</u></div> -->
+                        <div v-on:click="moveToSongs(playlist)" :id="playlist.name" class="playlist"><u>{{playlist.name}}</u></div>
+                    </div>
+                </div>
+                <div id="playlist-button"><button id="move-to-create-playlist-button" v-on:click="moveToCreatePlaylist" type="button" class="btn btn-primary btn-lg">Click to Create Another Playlist</button></div>
+                <div id="logout-button"><button id="logout" v-on:click="logout" type="button" class="btn btn-primary btn-lg">Click to Logout</button></div>
+            </div>
+
+
+            <div v-if="songScreen" id="songs-screen-title">Songs in {{clickedPlaylist.name}}</div>
+            <div id="song-screen" v-if="songScreen">
+                <div id="song-display">
+                    <ol class="user-list">
+                        <li class="song" v-for="song in songs" id="songsToDelete">
+                            <strong>Title:</strong>
+                            {{song.name}}</br>
+                            <strong>Length:</strong>
+                            {{song.length}}</br>
+                            <strong>Rating:</strong>
+                            {{song.rating}}</br>
+                            <div class="rest-actions">
+                                <button id="p" v-on:click="deleteSong(song)">Delete</button>
+                                <button id="e" v-on:click="editSong(song)">Edit</button>
+                            </div>
+           
+                        </li>    
+                    </ol>
+                </div>
+                <div id = "buttonsOnSongsScreen">
+                    <div id="number1"><button v-on:click="moveToCreateSong" type="button" class="btn btn-primary btn-lg">Click to Add Another Song to this playlist</button></div>
+                    <div id="number2" class="thing"><button v-on:click="moveToAppScreen" type="button" class="btn btn-primary btn-lg">Click to go to playlists</button></div>
+                </div>
+                <div id="edit-song-screen">Edit
+                    <span class="input-group-text" id="inputGroup-sizing-default">Song Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songName"></br>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Song Length</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songLength"></br>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Song Rating</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songRating">
+                </div>
+            </div>
+
+            <div v-if="createPlaylistMode" id="create-playlist-screen" v-if="createPlaylistMode">
+                <span class="input-group-text" id="inputGroup-sizing-default">Playlist Name</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="playlistName">
+                <div class="thing"><button id="create-playlist-button" v-on:click="createPlaylist" type="button" class="btn btn-primary btn-lg">Submit Playlist</button></div>
+            </div>
+
+            <div id="create-song-screen" v-if="createSongMode" class="newClass" v-if="createPlaylistMode">
+                <span class="input-group-text" id="inputGroup-sizing-default">Song Name</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songName"></br>
+                <span class="input-group-text" id="inputGroup-sizing-default">Song Length</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songLength"></br>
+                <span class="input-group-text" id="inputGroup-sizing-default">Song Rating</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" v-model="songRating">
+                <div class="thing"><button id="create-song-button" v-on:click="createSongOnServer" type="button" class="btn btn-primary btn-lg">Submit Song to Playlist</button></div>
+            </div>
+
+
+            
+            <footer id="footer">
+                <div id="footer-title">
+                    Music Organizer
+                </div></br>
+                <div id="footer-name">
+                    Slade Hirschi (the Best Programmer in the World)
+                </div>
+            </footer>
+
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="project.js"></script> 
+    </body>
+</html>
